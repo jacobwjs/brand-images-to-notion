@@ -23,7 +23,7 @@ You'll do everything by talking to **Claude Code** (the CLI, the desktop app, or
 VS Code extension).
 
 1. **Get the repo onto your machine.** In Claude, say:
-   > Clone `https://github.com/<your-org>/brand-images-to-notion` and open it.
+   > Clone `https://github.com/jacobwjs/brand-images-to-notion` and open it.
 
 2. **Let Claude set it up.** Then say:
    > Set up this repo.
