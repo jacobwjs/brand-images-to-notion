@@ -1,0 +1,10 @@
+[project]
+name = "brand-images-to-notion"
+version = "0.1.0"
+description = "An MCP server that generates on-brand images with gpt-image-2 and uploads them into Notion."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["mcp>=1.4.0"]
+
+[project.scripts]
+brand-images-to-notion = "server:main"

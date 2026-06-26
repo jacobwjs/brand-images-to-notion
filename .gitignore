@@ -1,0 +1,16 @@
+# Secrets — never commit
+.env
+
+# Generated images / scratch output
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+outputs/
+
+# Python / uv
+__pycache__/
+*.pyc
+.venv/
+.uv/
