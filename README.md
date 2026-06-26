@@ -93,6 +93,23 @@ No-`uv` fallback: `pip install mcp`, then set `.mcp.json` to
 - When an image references another company, use their name as text only — don't
   reproduce their logo.
 
+## Troubleshooting
+
+Most issues are setup-related. Tell Claude what you see and it can usually fix it — but
+here are the common ones:
+
+| Symptom | Fix |
+|---------|-----|
+| **`Operation not permitted`** when Claude reads your brand file | The file is inside a Google Drive / iCloud **`CloudStorage/`** folder, which macOS blocks. Drag a copy to your Desktop or Downloads and point Claude there. |
+| **`check_setup` says a key is missing** even though you edited `.env` | Claude Code only loads `.env` and MCP servers at startup. Fully **restart / reopen the folder**, then run `check_setup` again. |
+| **The `brand-images` tools don't appear** | When Claude Code starts, it asks you to approve the `brand-images` server — approve it, then restart. Confirm `.mcp.json` is present in the folder. |
+| **`uv: command not found`** | Install it: `curl -LsSf https://astral.sh/uv/install.sh \| sh` (or `brew install uv`). No-uv fallback: `pip install mcp`, then set `.mcp.json` to `"command": "python3", "args": ["server.py"]`. |
+| **OpenAI image error / 400 / quota** | Make sure **billing is enabled** on your OpenAI account (image generation isn't free), and your key is valid. Or switch to the Codex backend: run `codex login`, then ask for `backend="codex"`. |
+| **Notion upload fails (404 / "could not find page")** | The page isn't shared with your integration. Open the page → **•••** → **Connections** → add your integration, then retry. Also check the page URL is correct. |
+| **Notion says "unauthorized" / 401** | `NOTION_TOKEN` is wrong or missing in `.env`. Re-copy it from https://www.notion.so/my-integrations. |
+| **The image text is garbled or the logo looks off** | Normal for image models. Ask Claude to **re-run** (each run differs) or to refine one detail. It will never substitute a code-drawn image. |
+| **You pasted a token into a chat** | Rotate it: delete/regenerate the integration secret in Notion (or the key in OpenAI) and update `.env`. |
+
 ## License
 
 MIT — see [LICENSE](./LICENSE).
